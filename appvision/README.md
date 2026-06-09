@@ -1,6 +1,6 @@
 # 🔍 baclone (Video-to-Backend Reverse Engineer)
 
-![Baclone Infographic](./appvision_thumbnail.png)
+![Baclone Infographic](./baclone_thumbnail.png)
 
 Baclone is an AI-powered system architect that accepts a screen recording of any application and reverse-engineers its complete backend architecture. Using the state-of-the-art **Gemini 3.5 Flash** model via the Google Gemini API, it analyzes visual cues, user interactions, and screens to output a complete backend design blueprint.
 
@@ -16,7 +16,7 @@ Baclone is an AI-powered system architect that accepts a screen recording of any
 ## 📸 Screenshots & UI Preview
 
 ### Main Dashboard & Video Uploader
-![Dashboard Screen](./appvision/hero.png)
+![Dashboard Screen](./hero.png)
 
 *The dashboard features a high-fidelity glassmorphic dark-mode interface with file drag-and-drop, real-time Gemini processing indicators, and dynamic UML diagrams.*
 
