@@ -6,7 +6,7 @@ AppVision is an AI-powered system architect that accepts a screen recording of a
 
 ## 📺 Demo & Video Walkthrough
 
-[![AppVision Demo Video](https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[![AppVision Demo Video]()]()
 *Click the preview above to watch the application demo and walkthrough on YouTube.*
 
 ---
