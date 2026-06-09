@@ -8,8 +8,8 @@ Baclone is an AI-powered system architect that accepts a screen recording of any
 
 ## 📺 Demo & Video Walkthrough
 
-[Watch the Baclone Demo Video on YouTube](https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID)
-*Click the link above to watch the application demo and walkthrough on YouTube.*
+[![Baclone Demo Video](https://img.youtube.com/vi/DXtH4nCFIeE/maxresdefault.jpg)](https://youtu.be/DXtH4nCFIeE)
+*Click the preview above to watch the application demo and walkthrough on YouTube.*
 
 ---
 
