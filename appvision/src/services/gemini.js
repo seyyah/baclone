@@ -60,7 +60,7 @@ function repairJSON(text) {
   let s = text.trim();
   s = s.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '').trim();
 
-  try { return JSON.parse(s); } catch (_) {}
+  try { return JSON.parse(s); } catch { void 0; }
 
   // Fix truncated string: count structural characters
   let braces = 0, brackets = 0, inString = false, escape = false;
@@ -80,7 +80,7 @@ function repairJSON(text) {
   while (brackets > 0) { s += ']'; brackets--; }
   while (braces > 0) { s += '}'; braces--; }
 
-  try { return JSON.parse(s); } catch (_) {}
+  try { return JSON.parse(s); } catch { void 0; }
   throw new Error('Could not parse Gemini response. Try a shorter video or add a focus prompt to narrow the analysis.');
 }
 

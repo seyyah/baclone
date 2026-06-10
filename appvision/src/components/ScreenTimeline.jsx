@@ -1,6 +1,6 @@
 // src/components/ScreenTimeline.jsx
 import { motion } from 'framer-motion';
-import { Monitor, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 const SCREEN_ICONS = {
   login: '🔐', auth: '🔐', signup: '📝', register: '📝',

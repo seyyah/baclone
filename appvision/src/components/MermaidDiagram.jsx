@@ -30,7 +30,6 @@ mermaid.initialize({
 let idCounter = 0;
 
 export default function MermaidDiagram({ code, title, color = '#a78bfa' }) {
-  const containerRef = useRef(null);
   const [svg, setSvg] = useState('');
   const [error, setError] = useState(null);
   const [showCode, setShowCode] = useState(false);
@@ -39,7 +38,6 @@ export default function MermaidDiagram({ code, title, color = '#a78bfa' }) {
 
   useEffect(() => {
     if (!code) return;
-    setError(null);
 
     const clean = code.trim();
 
@@ -47,9 +45,10 @@ export default function MermaidDiagram({ code, title, color = '#a78bfa' }) {
       .then(({ svg: rendered }) => {
         // Inject responsive styles
         const styled = rendered
-          .replace('<svg ', '<svg style="width:100%;height:auto;max-width:100%" ')
-          .replace(/fill="[^"]*white[^"]*"/gi, 'fill="#e2e8f0"');
+           .replace('<svg ', '<svg style="width:100%;height:auto;max-width:100%" ')
+           .replace(/fill="[^"]*white[^"]*"/gi, 'fill="#e2e8f0"');
         setSvg(styled);
+        setError(null);
       })
       .catch((err) => {
         console.warn('[Mermaid] render error:', err);

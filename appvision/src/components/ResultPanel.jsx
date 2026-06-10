@@ -1,11 +1,11 @@
 // src/components/ResultPanel.jsx
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ShieldCheck, Database, Globe, GitBranch, Terminal,
-  Copy, Check, ChevronDown, RotateCcw, Download,
-  Sparkles, FileJson, Clock, Layers, AlertTriangle,
+  Copy, Check, RotateCcw, Download,
+  Sparkles, FileJson, Clock, AlertTriangle,
   TrendingUp, FileText, Box
 } from 'lucide-react';
 import FeatureCard from './FeatureCard';
@@ -81,29 +81,6 @@ function CopyBtn({ text, label='Copy' }) {
   );
 }
 
-function Collapsible({ title, children, defaultOpen=false, color='#a5b4fc' }) {
-  const [open, setOpen] = useState(defaultOpen);
-  return (
-    <div style={{ borderRadius:12,overflow:'hidden',border:'1px solid rgba(99,102,241,0.12)',background:'rgba(0,0,0,0.3)' }}>
-      <button onClick={()=>setOpen(v=>!v)}
-        style={{ width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between',
-          padding:'12px 16px',background:'transparent',border:'none',cursor:'pointer' }}>
-        <span style={{ fontSize:13,fontWeight:600,fontFamily:'JetBrains Mono,monospace',color }}>{title}</span>
-        <ChevronDown size={14} color="#64748b"
-          style={{ transform:open?'rotate(180deg)':'rotate(0)',transition:'transform 0.3s' }}/>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}}
-            exit={{height:0,opacity:0}} transition={{duration:0.3,ease:[0.4,0,0.2,1]}}
-            style={{overflow:'hidden'}}>
-            <div style={{padding:'0 16px 16px'}}>{children}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 // ── Markdown Export ─────────────────────────────────────────────────────────
 function buildMarkdown(result) {
@@ -426,7 +403,7 @@ export default function ResultPanel({ result, onReset }) {
           <FileText size={14}/> Markdown Report
         </button>
 
-        <button onClick={() => { const {_mock,...c}=result; downloadText(JSON.stringify(c,null,2),'baclone-analysis.json','application/json'); }}
+        <button onClick={() => { const c = { ...result }; delete c._mock; downloadText(JSON.stringify(c,null,2),'baclone-analysis.json','application/json'); }}
           style={{ display:'flex',alignItems:'center',gap:8,padding:'11px 22px',
           borderRadius:12,fontSize:14,fontWeight:600,cursor:'pointer',fontFamily:'Inter,sans-serif',
           background:'rgba(139,92,246,0.08)',border:'1px solid rgba(139,92,246,0.22)',color:'#c4b5fd',transition:'all 0.2s' }}

@@ -1,5 +1,5 @@
 // src/components/PromptInput.jsx
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, ChevronDown } from 'lucide-react';
 
