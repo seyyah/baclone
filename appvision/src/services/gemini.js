@@ -185,6 +185,8 @@ const MODEL_CHAIN = [
   'gemini-2.5-flash',
   'gemini-2.0-flash',
   'gemini-2.0-flash-001',
+  'gemini-2.0-flash-lite',
+  'gemini-flash-latest',
 ];
 
 async function generateWithRetry(parts, fullPrompt, onProgress) {
@@ -214,6 +216,12 @@ async function generateWithRetry(parts, fullPrompt, onProgress) {
         const msg = err?.message || '';
         const is503 = msg.includes('503') || msg.includes('high demand') || msg.includes('overloaded');
         const is429 = msg.includes('429') || msg.includes('quota') || msg.includes('rate');
+        const isUnsupported = msg.includes('404') || msg.includes('not found') || msg.includes('400') || msg.includes('supported');
+
+        if (isUnsupported) {
+          console.warn(`[Baclone] ${modelName} is unsupported or not found, trying next model…`);
+          break; // Try next model in chain
+        }
 
         if ((is503 || is429) && attempt < 2) {
           const delay = RETRY_DELAYS[attempt];
