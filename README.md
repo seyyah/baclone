@@ -39,8 +39,27 @@ It is designed to translate visual cues, dynamic UI changes, and user interactio
 
 Baclone operates as a client-side reactive application that interacts directly with the Google Gemini API using a secure, multi-stage pipeline.
 
+### 📊 System Workflow Diagrams
+
+#### Vertical Flow (TD)
 ```mermaid
 flowchart TD
+    A[Drag & Drop Video File] --> B[Gemini Files API Upload]
+    B --> C{Active Status Polling}
+    C -->|"Polling 2-3 mins"| C
+    C -->|ACTIVE| D[Generate Content Request]
+    D --> E{Gemini Model Chain}
+    E --x|"Try gemini-3.5-flash (503 / 429)"| F[Retry with Backoff]
+    F --> E
+    E -->|"Fallback to gemini-2.5-flash / gemini-2.0-flash"| G[Raw API JSON Response]
+    G --> H[JSON Auto-Repair Parser]
+    H --> I[React State Dispatcher]
+    I --> J[Mermaid Diagrams, Entities, API Maps & AI Prompts]
+```
+
+#### Horizontal Flow (LR)
+```mermaid
+flowchart LR
     A[Drag & Drop Video File] --> B[Gemini Files API Upload]
     B --> C{Active Status Polling}
     C -->|"Polling 2-3 mins"| C
